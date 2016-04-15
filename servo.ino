@@ -15,6 +15,7 @@ unsigned int currTemp = 0;
 void setup()
 {
 	myServo.attach(9);
+	myServo.write(0);
 	Serial.begin(9600);
 }
 
@@ -36,7 +37,7 @@ void loop()
 	Serial.print(ActualTemp);
 
 	//angle = map(potVal,0,1023,0,179);
-	angle = map(ActualTemp,15,35,0,179);
+	angle = map(ActualTemp,15,30,0,179);
 	Serial.print("\nangle: ");
 	Serial.print(angle);
 
