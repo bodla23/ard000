@@ -33,16 +33,19 @@ void loop()
 	Serial.print(voltage);
 
 	float ActualTemp = (voltage - 0.5)*100;
-	Serial.print("\t ActualTemp is ");
+	Serial.print("\n ActualTemp is ");
 	Serial.print(ActualTemp);
+	Serial.print("\t currTemp = ");
+	Serial.print (currTemp);
 
 	//angle = map(potVal,0,1023,0,179);
-	angle = map(ActualTemp,15,30,0,179);
+	angle = map(ActualTemp,20,30,0,179);
+	//angle = map(tempSensor,145,160,0,179);
 	Serial.print("\nangle: ");
 	Serial.print(angle);
 
 
-	if (abs(currTemp - ActualTemp) > 10)
+	if (abs(currTemp - ActualTemp) > 5)
 	{
 		Serial.print("temp error");
 	}
@@ -52,5 +55,6 @@ void loop()
 	}
 
 	currTemp = ActualTemp;
+
 	delay(5000);
 }
